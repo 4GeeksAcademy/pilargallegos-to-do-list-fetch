@@ -42,7 +42,15 @@ function ToDoList() {
     };
 
     const removeToDo = (id) => {
-        setToDo(ToDo.filter((task) => task.id !== id));
+        fetch (`https://playground.4geeks.com/todo/todos/{todo_id}`, {
+            method: "DELETE", 
+            headers:{"Content-Type": "aplication/json"}, 
+            headers:{"Content-Type": "aplication/json"}, 
+        })
+        .then(()=>setToDo((prevToDo) => prevToDo.filter((task) => task.id !== id)))
+        .catch((error)=>{
+            console.error("Error al borrar la tarea", error);
+        })
     };
 
     return (
